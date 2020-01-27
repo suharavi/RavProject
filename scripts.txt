@@ -1,0 +1,48 @@
+Poweshell commands:
+
+$PSVersionTable = To see the powershell version
+New-Item -Path 'C:\Users\srcre\Desktop' -ItemType Directory -Name windowstest = to create a directory (pwd)
+1..4 | ForEach-Object {New-Item -Path C:\Users\srcre\Desktop\Windows -ItemType File -Name "myfile$_" } = to create multiple files
+Remove-Item .\myfile1 = remove file
+
+$var = 1
+if 
+($var -eq 1) {write-host "it is true}
+else
+($var -eq 1) {write-host "it is false}
+
+$var = 2
+if ($var -eq 1) {write-host "it is true}
+else
+($var -eq 1) {write-host "it is false}
+===========================================================================================================================
+$Array = @()
+$processes = Get-process
+
+foreach ($proc in $processes)
+{
+    if ($proc.WS/100 -gt 100)
+    {
+        $Array += New-Object psobject -Property @{'ProcessName' = $proc.status; 'ws' = $proc.name} 
+    }
+}
+
+$Array | select 'processname', 'workingset'| export-csv -Path C:\Users\srcre\Desktop\Windows\file.csv -NoTypeInformation
+$CSVImport = @()
+$CSVImport = C:\Users\srcre\Desktop\Windows\file.csv
+
+foreach ($service in $CSVImport) {write-host "process name: $service.name workingset: $service.workingset"}
+===============================================================================================================================
+
+Import-Csv C:\Users\srcre\Desktop\Windows\server.csv
+$myObejectArray = Import-CSV C:\Users\srcre\Desktop\Windows\server.csv
+foreach ($server in $myObejectArray){write-host  "The name of the server is": $server.ObjectServerName}
+foreach ($server in $myObejectArray){write-host  "Model of the server": $server.ObjectServerModel}
+foreach ($server in $myObejectArray){write-host  "server is in the rack": $server.ObjectServerNumber}
+
+foreach ($server in $myObejectArray){write-host "Here is the server information": $server.ObjectServerName 
+                                                    $server.ObjectServerModel $server.ObjectServerNumber }
+
+================================================================================================================================
+
+
